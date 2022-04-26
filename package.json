@@ -1,0 +1,20 @@
+{
+  "name": "mern-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callumgordon90/Proyecto-Final-Backend-GeeksHubsAcademy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/callumgordon90/Proyecto-Final-Backend-GeeksHubsAcademy/issues"
+  },
+  "homepage": "https://github.com/callumgordon90/Proyecto-Final-Backend-GeeksHubsAcademy#readme"
+}
