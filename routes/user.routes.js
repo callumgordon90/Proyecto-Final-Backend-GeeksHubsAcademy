@@ -5,10 +5,14 @@ const userController = require("../controllers/user.controller");
 
 //CRUD ENDPOINTS: 
 
-//Authorisation (register/login/logout)
-router.post("/register" , authController.signUp);
 
-// User display: 'block' (show all of the users in the database),
+//AUTHORISATION ENDPOINTS (REGISTER, LOGIN, LOGOUT):
+router.post("/register" , authController.signUp);
+router.post('/login',authController.signIn);
+router.get('/logout', authController.logout);
+
+
+// Display all the users in the database:
 router.get('/',userController.getAllUsers);
 
 //Get user by id:
