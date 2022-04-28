@@ -23,7 +23,8 @@ module.exports.signUp = async (req, res) => {
         res.status(201).json({ user: user._id });
     }
     catch (err) {
-        res.status(200).send({ err })
+        const errors = signUpErrors(err);
+        res.status(200).send({errors})
     }
 }
 
@@ -38,12 +39,13 @@ module.exports.signIn = async (req, res) => {
         res.cookie('jwt', token, { httpOnly: true, maxAge });
         res.status(200).json({ user: user._id })
     } catch (err) {
-        res.status(200).json(err);
+        const errors = signInErrors(err);
+        res.status(200).json({errors});
     }
 }
 
 //CRUD function to logout:
 module.exports.logout = (req, res) => {
-    res.cookie('jwt', '', {maxAge: 1});
+    res.cookie('jwt', '', { maxAge: 1 });
     res.redirect('/');
 }
