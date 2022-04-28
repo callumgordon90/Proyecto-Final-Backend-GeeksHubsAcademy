@@ -27,6 +27,8 @@ module.exports.signUp = async (req, res) => {
     }
 }
 
+
+//CRUD function to login a user:
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body
 
