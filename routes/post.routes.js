@@ -1,5 +1,5 @@
 const router = require ('express').Router();
-const postController = require ('../controlles/post.controller');
+const postController = require ('../controllers/post.controller');
 
 
 //CRUD ENDPOINTS:
@@ -15,5 +15,11 @@ router.post('/', postController.updatePost);
 
 //Delete a post:
 router.delete('/:id', postController.deletePost);
+
+//Like a post:
+router.patch('/like-post/:id', postController.likePost);
+
+//Unlike a post:
+router.patch('/unlike-post/:id', postController.unlikePost);
 
 module.exports = router;
