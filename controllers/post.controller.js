@@ -20,7 +20,6 @@ module.exports.createPost = async (req, res) => {
         likers: [],
         comments: [],
     });
-
     try {
         const post = await newPost.save();
         return res.status(201).json(post);
@@ -34,7 +33,6 @@ module.exports.createPost = async (req, res) => {
 module.exports.updatePost = (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID not recognised : " + req.params.id);
-
     const updatedRecord = {
         message: req.body.message
     }
@@ -54,7 +52,6 @@ module.exports.updatePost = (req, res) => {
 module.exports.deletePost = (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID not recognised : " + req.params.id);
-
     PostModel.find.findByIdAndRemove(
         req.params.id,
         (err, docs) => {
@@ -125,3 +122,40 @@ module.exports.unlikePost = async (req, res) => {
         return res.status(400).send(err);
     }
 }
+
+
+//CRUD function to comment on the post of another user:
+module.exports.commentPost = (req, res) => {
+    if (!ObjectID.isValid(req.params.id))
+        return res.status(400).send("ID not recognised : " + req.params.id);
+    try {
+        return PostModel.findByIdAndUpdate(
+            req.params.id,
+            {
+                $push: {
+                    comments: {
+                        commenterId: req.body.commenterId,
+                        commenterPseudo: req.body.commenterPseudo,
+                        text: req.body.text,
+                        timestamp: new Date().getTime(),
+                    },
+                },
+            },
+            { new: true },
+            (err, docs) => {
+                if (!err) return res.send(docs);
+                else return res.status(400).send(err);
+            }
+        );
+    } catch (err) {
+        return res.status(400).send(err);
+    }
+};
+
+//CRUD function to edit the comment on a post:
+module.exports.editcommentPost = (req, res) => {
+};
+
+//CRUD function to delete the comment on a post:
+module.exports.deletecommentPost = (req, res) => {
+};

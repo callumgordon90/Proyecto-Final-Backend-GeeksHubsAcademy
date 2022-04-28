@@ -28,6 +28,6 @@ router.patch('/comment-post/:id', postController.commentPost);
 //Edit the comment on a post:
 router.patch('/edit-comment-post/:id', postController.editCommentPost);
 //Delete the comment on a post:
-router.patch('/delet-comment-post/:id', postController.deleteCommentPost);
+router.patch('/delete-comment-post/:id', postController.deleteCommentPost);
 
 module.exports = router;
