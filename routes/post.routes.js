@@ -11,7 +11,7 @@ const upload = multer();
 router.get('/', postController.readPost);
 
 //Create a post:
-router.post('/', postController.createPost);
+router.post('/', upload.single("file"), postController.createPost);
 
 //Update a post:
 router.post('/', postController.updatePost);

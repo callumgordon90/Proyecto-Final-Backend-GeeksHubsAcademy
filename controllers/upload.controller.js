@@ -2,6 +2,7 @@ const UserModel = require('../models/user.model');
 const fs = require('fs');
 const { promisify } = require('util');
 const pipeline = promisify(require('stream').pipeline);
+const { uploadErrors } = require("../tools/errors.tools");
 
 
 //A function to detect the profile photo file type and size and throw an error if these perameters are not valid:
