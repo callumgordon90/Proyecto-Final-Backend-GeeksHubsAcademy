@@ -22,6 +22,8 @@ router.patch('/like-post/:id', postController.likePost);
 //Unlike a post:
 router.patch('/unlike-post/:id', postController.unlikePost);
 
+
+
 //COMMENTS:
 //Comment on the post of another user:
 router.patch('/comment-post/:id', postController.commentPost);
@@ -29,5 +31,7 @@ router.patch('/comment-post/:id', postController.commentPost);
 router.patch('/edit-comment-post/:id', postController.editCommentPost);
 //Delete the comment on a post:
 router.patch('/delete-comment-post/:id', postController.deleteCommentPost);
+
+
 
 module.exports = router;
