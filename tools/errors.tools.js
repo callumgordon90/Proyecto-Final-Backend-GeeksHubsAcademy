@@ -33,3 +33,18 @@ module.exports.signInErrors = (err) => {
 
     return errors;
 }
+
+
+//Error function for uploading a profile picture:
+module.exports.uploadErrors = (err) =>
+{
+    let errors = {format: '', maxSize: ""};
+
+    if (err.message.includes('invalid file'))
+        errors.format = "Format incompatible";
+
+    if (err.message.includes('max size'))
+        errors.maxSize = "The file exceeds 500ko";
+
+    return errors
+}

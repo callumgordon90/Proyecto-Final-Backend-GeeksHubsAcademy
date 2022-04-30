@@ -1,6 +1,9 @@
 const router = require ('express').Router();
 const postController = require ('../controllers/post.controller');
 
+const multer = require('multer');
+const upload = multer();
+
 
 //CRUD ENDPOINTS:
 

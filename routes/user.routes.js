@@ -2,6 +2,10 @@ const router = require("express").Router();
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
 
+const uploadController = require("../controllers/upload.controller");
+const multer = require('multer');
+const upload = multer();
+
 
 //CRUD ENDPOINTS: 
 
@@ -29,6 +33,11 @@ router.patch('/follow/:id', userController.follow);
 
 //The 'Unfollow feature:
 router.patch('/unfollow/:id', userController.follow);
+
+
+
+//Upoload a profile picture on an account:
+router.post('/upload', upload.single('file'), uploadController.uploadProfile);
 
 
 
