@@ -1,6 +1,6 @@
 //Various error responses for when people make a mistake in signing up
 module.exports.signUpErrors = (err) =>{
-    let errors = { pseudo: '', email: '', password: ''}
+    let errors = { pseudo: "", email: "", password: ""}
 
     if (err.message.includes('pseudo'))
         errors.pseudo= "The username is either incorrect or already registered";

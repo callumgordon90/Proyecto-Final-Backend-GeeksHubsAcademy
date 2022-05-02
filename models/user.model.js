@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
             minLength: 3,
             maxLength: 55,
             unique: true,
-            trimp: true
+            trim: true
         },
         email: {
             type: String,
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
             validate: [isEmail],
             lowercase: true,
             unique: true,
-            trimp: true,
+            trim: true,
         },
         password: {
             type: String,
@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema(
 // play function before save into display: 'block',
 userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash.apply(this.password, salt);
+    this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
