@@ -59,15 +59,15 @@ userSchema.pre("save", async function (next) {
 
 // check authentification of login by comparing bcrpyt password with the password that the user has
 userSchema.statics.login = async function (email, password) {
-    const user = await this.findOne({email});
+    const user = await this.findOne({ email });
     if (user) {
         const auth = await bcrypt.compare(password, user.password);
         if (auth) {
-            return user; 
+            return user;
         }
-        throw Error ('The password is incorrect');
+        throw Error('The password is incorrect');
     }
-    throw Error ('incorrect email')
+    throw Error('incorrect email')
 };
 
 

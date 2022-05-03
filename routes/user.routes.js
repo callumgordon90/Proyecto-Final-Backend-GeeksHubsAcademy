@@ -32,7 +32,7 @@ router.delete('/:id', userController.deleteUser);
 router.patch('/follow/:id', userController.follow);
 
 //The 'Unfollow feature:
-router.patch('/unfollow/:id', userController.follow);
+router.patch('/unfollow/:id', userController.unfollow);
 
 
 
