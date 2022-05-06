@@ -1,6 +1,6 @@
 import React from 'react';
 
-const index = () => {
+const Home = () => {
     return (
         <div>
             Hello from home

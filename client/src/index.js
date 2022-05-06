@@ -11,6 +11,6 @@ import './styles/index.scss';
 ReactDOM.render(
 
   <App />,
-  
+
   document.getElementById('root')
 );
