@@ -1,6 +1,6 @@
 import React from 'react';
 
-const index = () => {
+const Trending = () => {
     return (
         <div>
             Hello from trending

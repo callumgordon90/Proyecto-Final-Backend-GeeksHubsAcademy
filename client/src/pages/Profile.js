@@ -1,6 +1,6 @@
 import React from 'react';
 
-const index = () => {
+const Profile = () => {
     return (
         <div>
             Hello from profile
