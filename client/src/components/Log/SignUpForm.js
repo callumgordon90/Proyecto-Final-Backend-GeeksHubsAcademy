@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const SignUpForm = () => {
+    const [formSubmit, setFormSubmit] = useState(false);
     const [pseudo, setPseudo] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +15,7 @@ const SignUpForm = () => {
         const emailError = document.querySelector('.email.error');
         const passwordError = document.querySelector('.password.error');
         const passwordConfirmError = document.querySelector('.password-confirm.error');
-        const termsError = document.querySelector ('.terms.error');
+        const termsError = document.querySelector('.terms.error');
 
         passwordConfirmError.innerHTML = "";
         termsError.innerHTML = "";
@@ -25,8 +26,8 @@ const SignUpForm = () => {
 
             if (!terms.checked)
                 termsError.innerHTML = "Please accept the terms and conditions";
-        }  else {
-            await axios ({
+        } else {
+            await axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/user/register`,
                 contentType: {
@@ -41,6 +42,8 @@ const SignUpForm = () => {
                         pseudoError.innerHTML = res.data.errors.pseudo;
                         emailError.innerHTML = res.data.errors.email;
                         passwordError.innerHTML = res.data.errors.password;
+                    } else {
+                        setFormSubmit(true);
                     }
                 })
                 .catch((err) => console.log(err));
@@ -48,6 +51,14 @@ const SignUpForm = () => {
     };
 
     return (
+        <>
+            {formSubmit ? (
+                <>
+                <SignInForm />
+                <h4> className="success">Successfully registered , connected</h4>
+                </>
+            ) : (
+            
         <form action="" onSubmit={handleRegister} id="sign-up-form">
             <label htmlFor="pseudo">Pseudo</label>
             <br />
@@ -83,6 +94,7 @@ const SignUpForm = () => {
             <div className="password error"></div>
             <br />
             <label htmlFor="password-conf">Confirm password</label>
+            <br/>
             <input
                 type="password"
                 name="password"
@@ -99,6 +111,8 @@ const SignUpForm = () => {
             <br />
             <input type="submit" value="Validate Registration" />
         </form>
+            )}
+        </>
     );
 };
 
