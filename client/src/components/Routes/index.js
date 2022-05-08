@@ -8,6 +8,7 @@ import Trending from '../../pages/Trending';
 const index = () => {
     return (
         <Router>
+            <Navbar />
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/profile" exact component={Profile} />

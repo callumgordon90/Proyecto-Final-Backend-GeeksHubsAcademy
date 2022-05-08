@@ -1,7 +1,6 @@
 import React from 'react';
 import { UidContext } from './components/AppContext';
 import Routes from "./components/Routes";
-import { UidContext } from "./components/AppContext";
 import axios from "axios";
 
 const App = () => {

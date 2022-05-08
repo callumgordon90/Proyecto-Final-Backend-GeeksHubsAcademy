@@ -55,7 +55,7 @@ const SignUpForm = () => {
             {formSubmit ? (
                 <>
                 <SignInForm />
-                <h4> className="success">Successfully registered , connected</h4>
+                <h4 className="success">Successfully registered , connected</h4>
                 </>
             ) : (
             
