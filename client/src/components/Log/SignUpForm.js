@@ -8,8 +8,44 @@ const SignUpForm = () => {
     const [controlPassword, setControlPassword] = useState('');
 
     const handleRegister = async (e) => {
+        e.preventDefault();
+        const terms = document.getElementById('terms');
+        const pseudoError = document.querySelector('.pseudo.error');
+        const emailError = document.querySelector('.email.error');
+        const passwordError = document.querySelector('.password.error');
+        const passwordConfirmError = document.querySelector('.password-confirm.error');
+        const termsError = document.querySelector ('.terms.error');
 
-    }
+        passwordConfirmError.innerHTML = "";
+        termsError.innerHTML = "";
+
+        if (password !== controlPassword || !terms.checked) {
+            if (password !== controlPassword)
+                passwordConfirmError.innerHTML = "The password is incorrect";
+
+            if (!terms.checked)
+                termsError.innerHTML = "Please accept the terms and conditions";
+        }  else {
+            await axios ({
+                method: "post",
+                url: `${process.env.REACT_APP_API_URL}api/user/register`,
+                contentType: {
+                    pseudo,
+                    email,
+                    password
+                }
+            })
+                .then((res) => {
+                    console.log(res);
+                    if (res.data.errors) {
+                        pseudoError.innerHTML = res.data.errors.pseudo;
+                        emailError.innerHTML = res.data.errors.email;
+                        passwordError.innerHTML = res.data.errors.password;
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+    };
 
     return (
         <form action="" onSubmit={handleRegister} id="sign-up-form">
