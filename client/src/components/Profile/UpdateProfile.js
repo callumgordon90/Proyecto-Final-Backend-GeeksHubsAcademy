@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import LeftNav from '../LeftNav';
 import { useSelector } from "react-redux";
 import UploadImg from "./UploadImg";
+import { updateBio } from "../../actions/user.actions";
 
 const UpdateProfile = () => {
     const [bio, setBio] = useState ('');
     const [updateForm, setUpdateForm] = useState(false);
     const userData = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
 
     const handleUpdate = ()=> {
-        
+        dispatch(updateBio(userData._id, bio));
+        setUpdateForm(false);
     }
 
 
@@ -43,6 +46,7 @@ const UpdateProfile = () => {
                             </>
                         )}
                     </div>
+                    <h4>Member since : {dateParser (userData.createdAt)}</h4>
                 </div>
             </div>
         </div>
