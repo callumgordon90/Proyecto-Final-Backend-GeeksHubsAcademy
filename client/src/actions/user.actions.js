@@ -41,5 +41,5 @@ export const updateBio = (userId, bio) => {
                 dispatch({ type: UPDATE_BIO, payload:bio })
             })
             .catch((err) => console.log(err))
-    }
-}
+    };
+};
