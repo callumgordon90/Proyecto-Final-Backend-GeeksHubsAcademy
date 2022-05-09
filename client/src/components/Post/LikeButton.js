@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useContext, useContext, useEffect } from 'react';
+import { UidContext } from "../AppContext";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
-const LikeButton = () => {
+const LikeButton = ({ post }) => {
+    const [liked, setLiked] = useEffect(false);
+    const uid = useContext(UidContext);
+
+
+    const like = () => {}
+    const unlike = () => {}
+
+
+
+
+    useEffect(() => {
+        if (post.likers.includes(uid)) setLiked(true)
+    }, [uid, post.likers, liked])
     return (
-        <div>
-            Like
+        <div className="like-container">
+            {uid === null && (
+            <Popup trigger={<img src="./img/icons/heart.svg" alt="like" />} position={
+            ['bottom center', 'bottom right', 'bottom left']} closeOnDocumentClick>
+                <div>Connect in order to like a post!</div>   
+                </Popup>
+            )}
+            {uid && liked === false && (
+                <img src="./img/icons/heart.svg" onClick={like} alt="like" />
+            )}
+            {uid && liked && (
+                <img src="./img/icons/heart-filled.svg" onClick={unlike} alt="unlike" />
+            )}
         </div>
     );
     
