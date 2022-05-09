@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { followUser, unfollowUser } from "../../actions/user.actions";
 import { isEmpty } from '../tools';
 
 const FollowHandler = ({ idToFollow}) => {
@@ -13,8 +14,9 @@ const FollowHandler = ({ idToFollow}) => {
     }
 
     const handleUnfollow = () => {
-
-    }
+        dispatch(unfollowUser(userData._id, idTofollow));
+        setIsFollowed(false);
+    };
 
     useEffect(() => {
         if (isEmpty (userData.following)) {

@@ -1,9 +1,10 @@
 import React from 'react';
+import LeftNav from '../components/LeftNav';
 
 const Home = () => {
     return (
-        <div>
-            Hello from home
+        <div className="home">
+            <LeftNav />
         </div>
     );
 };
