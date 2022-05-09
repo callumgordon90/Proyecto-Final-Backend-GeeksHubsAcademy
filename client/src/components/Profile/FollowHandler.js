@@ -5,9 +5,11 @@ import { isEmpty } from '../tools';
 const FollowHandler = ({ idToFollow}) => {
     const userData = useSelector((state) => state.userReducer);
     const [isFollowed, setIsFollowed] = useState(false);
+    const dispatch = useDispatch();
 
     const handleFollow= () => {
-
+        dispatch(followUser(userData._id, idToFollow));
+        setIsFollowed(true);
     }
 
     const handleUnfollow = () => {
