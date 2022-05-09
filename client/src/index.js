@@ -14,7 +14,7 @@ import logger from 'redux-logger';
 
 
 const store = createStore(
-  rootReducer, composeWithDevTools(applyMiddleware(thunk, logger))
+  rootReducer, composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.dispatch(getUsers());

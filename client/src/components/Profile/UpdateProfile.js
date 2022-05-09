@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LeftNav from '../LeftNav';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadImg from "./UploadImg";
 import { updateBio } from "../../actions/user.actions";
 import { dateParser } from "../tools";
@@ -9,6 +9,8 @@ const UpdateProfile = () => {
     const [bio, setBio] = useState ('');
     const [updateForm, setUpdateForm] = useState(false);
     const userData = useSelector((state) => state.userReducer);
+    const usersData = useSelector((state) => state.usersReducer);
+
     const dispatch = useDispatch();
     const [followingPopup, setFollowingPopup] = useState(false);
     const [followersPopup, setFollowersPopup] = useState(false);
@@ -54,6 +56,10 @@ const UpdateProfile = () => {
                     <h5 onClick={() => setFollowersPopup(true)}>Followers : {userData.followers ? userData.followers.length : ""}</h5>
                 </div>
             </div>
+
+
+
+
             {followingPopup && (
                 <div className="popup-profile-container">
                     <div className="model">
@@ -62,10 +68,52 @@ const UpdateProfile = () => {
                         &#100005;
                         </span>
                         <ul>
-                            
+                            {usersData.map((user) => {
+                                for (let i=0; i < userData.following.length; i++){
+                                    if (user._id == userData.following[i]) {
+                                        return(
+                                            <li key={user._id}>
+                                                <img src={user.picture} alt="user-pic" />
+                                                <h4>{user.pseudo}</h4>
+                                                <h1>Follow handler</h1>
+                                            </li>
+                                        );
+                                    }
+                                }
+                            })}
                         </ul>
                     </div>
-                </div>)}
+                </div>
+            )}
+
+
+            {followersPopup && (
+                <div className="popup-profile-container">
+                    <div className="model">
+                        <h3>Followers></h3>
+                        <span className="cross" onClick={() => setFollowersPopup(false)}>
+                        &#100005;
+                        </span>
+                        <ul>
+                            {usersData.map((user) => {
+                                for (let i=0; i < userData.followers.length; i++){
+                                    if (user._id == userData.followers[i]) {
+                                        return(
+                                            <li key={user._id}>
+                                                <img src={user.picture} alt="user-pic" />
+                                                <h4>{user.pseudo}</h4>
+                                                <h1>Follow handler</h1>
+                                            </li>
+                                        );
+                                    }
+                                }
+                            })}
+                        </ul>
+                    </div>
+                </div>
+            )}
+
+
         </div>
     );
 };
