@@ -4,14 +4,18 @@ import { dateParser, isEmpty } from '../tools';
 import FollowHandler from '../Profile/FollowHandler';
 import LikeButton from './LikeButton';
 import DeleteCard from './Delete.Card';
+import CardComments from './CardComments';
+
 
 const Card = ({ post }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [showComments, setShowComments] = useState(false);
     const usersData = useSelector((state) => state.users.Reducer);
     const userData = useSelector((state) => state.user.Reducer);
     const dispatch = useDispatch();
+
 
 
     const updateItem = async () => {
@@ -38,7 +42,7 @@ const Card = ({ post }) => {
                             !isEmpty(usersData[0]) &&
                             usersData
                                 .map((user) => {
-                                    if (user._id === post.posterId) return user.picture
+                                    if (user._id === post.posterId) return user.picture;
                                     else return null
                                 })
                                 .join('')
@@ -105,12 +109,16 @@ const Card = ({ post }) => {
 
                         <div className="card-footer">
                             <div className="comment-icon">
-                                <img src="./img/icons/message1.svg" alt="comment" />
+                                <img 
+                                    onClick={() => setShowComments(!showComments)}
+                                    src="./img/icons/message1.svg" 
+                                    alt="comment" />
                                 <span> {post.comments.length}</span>
                             </div>
                             <LikeButton post={post} />
                             <img src="./img/icons/share.svg" alt="share" />
                         </div>
+                        {showComments && <CardComments post={post} />}
                     </div>
                 </>
             )}

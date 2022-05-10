@@ -14,6 +14,22 @@ export const dateParser= (num) => {
     let date = new Date(timestamp).toLocalDateString('en-EN', options);
 
     return date.toString();
+};
+
+export const timestampParser = (num) => {
+    let options = {
+        hour: "2-digit", 
+        minute: "2-digit", 
+        second: "2-digit", 
+        weekday: "long", 
+        year: "numeric", 
+        month: "short", 
+        day: "numeric",
+    };
+
+    let date = newDate(num).toLocalDateString("en-EN", options);
+
+    return date.toString();
 }
 
 export const isEmpty = (value) => {
