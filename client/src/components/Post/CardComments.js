@@ -58,6 +58,7 @@ const CardComments = ({ post }) => {
                                 <span>{timestampParser(comment.timestamp)}</span>
                             </div>
                             <p>{commment.text}</p>
+                            <EditDeleteComment coment={comment} postId={post._id} />
                         </div>
                     </div>
                 )

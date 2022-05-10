@@ -9,6 +9,7 @@ export const DELETE_POST = "DELETE_POST";
 
 //comments
 export const ADD_COMMENT = "ADD_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
 
 
 export const getPosts = (num) => {
@@ -93,3 +94,17 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
     };
 };
 
+
+export const editComment = (postId, commentId, text) => {
+    return (dispatch) => {
+        return axios({
+            method: 'patch',
+            url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
+            data: { commentId, text },
+        })
+            .then((res) => {
+                dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text} });
+            })
+            .catch((err) => console.log(err));
+    };
+}
