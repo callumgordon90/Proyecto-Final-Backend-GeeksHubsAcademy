@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import React, { useDispatch } from 'react-redux';
+import React, { useDispatch, useSelector } from 'react-redux';
 import React, { getPosts } from '../actions/post.actions';
+import Card from "./Post/Card";
+import { isEmpty } from "./tools";
 
 
 const Thread = () => {
     const [loadPost, setLoadPost] = useState(true);
+    const [count, setCount] = useState(5);
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer);
 
+
+    const loadMore = () => {
+        if (window.innerHeight + document.documentElement.scrolTop + 1 > document.
+        scrollingElement.scrollHeight) {
+            setLoadPost(true);
+        }
+    }
+
+
     useEffect (()=>{
         if (loadPost) {
-            dispatch(getPosts());
-            setLoadPost(false)
+            dispatch(getPosts(count));
+            setLoadPost(false);
+            setCount(count + 5);
         }
-    }, [loadPost, dispatch])
+
+        window.addEventListener('scroll', loadMore);
+        return () => window.removeEventListener('scroll', loadMore);
+    }, [loadPost, dispatch, count]);
 
 
 
