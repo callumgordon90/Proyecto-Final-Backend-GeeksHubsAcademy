@@ -10,10 +10,14 @@ const Card = ({ post }) => {
     const [textUpdate, setTextUpdate] = useState(null);
     const usersData = useSelector((state) => state.users.Reducer);
     const userData = useSelector((state) => state.user.Reducer);
+    const dispatch = useDispatch();
 
 
     const updateItem = async () => {
-
+        if (textUpdate) {
+            await dispatch(updatePost(post._id, textUpdate))
+        }
+        setIsUpdated(false);
     }
 
 

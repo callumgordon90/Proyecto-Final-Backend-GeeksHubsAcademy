@@ -49,7 +49,7 @@ export const unlikePost = (postId, userId) => {
 
 export const updatePost = (postId, message) => {
     return (dispatch) => {
-        return({
+        return axios ({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
             data: { message }
