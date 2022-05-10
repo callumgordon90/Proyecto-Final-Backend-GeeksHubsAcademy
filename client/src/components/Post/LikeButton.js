@@ -17,14 +17,21 @@ const LikeButton = ({ post }) => {
     };
 
 
-    const unlike = () => {}
+    const unlike = () => {
+        dispatch(unlikePost(post._id, uid))
+        setLiked(false);
+    }
 
 
 
 
     useEffect(() => {
-        if (post.likers.includes(uid)) setLiked(true)
-    }, [uid, post.likers, liked])
+        if (post.likers.includes(uid)) setLiked(true);
+        else setLiked(false);
+    }, [uid, post.likers, liked]);
+
+
+
     return (
         <div className="like-container">
             {uid === null && (
@@ -39,6 +46,7 @@ const LikeButton = ({ post }) => {
             {uid && liked && (
                 <img src="./img/icons/heart-filled.svg" onClick={unlike} alt="unlike" />
             )}
+            <span>{post.likers.length}</span>
         </div>
     );
     
