@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { deleteComment } from '../../actions/post.actions';
 import { UidContext } from '../AppContext';
 
 const EditDeleteComment = ({ comment, postId }) => {
@@ -11,12 +12,18 @@ const EditDeleteComment = ({ comment, postId }) => {
     const handleEdit = (e) => {
         e.preventDefault();
 
-        if(text) {
+        if (text) {
             dispatch(editComment(postId, comment._id, text));
             setText('');
             setEdit(false);
         }
-     }
+    }
+
+
+    const handleDelete = () => dispatch(deleteComment(postId, comment._id));
+
+
+
 
     useEffect(() => {
         const checkAuthor = () => {
@@ -40,14 +47,25 @@ const EditDeleteComment = ({ comment, postId }) => {
                     <label htmlFor="text" onClick={() => setEdit(!edit)}>Edit Comment
                     </label>
                     <br />
-                    <input 
-                    type="text" 
-                    name="text" 
-                    onChange={(e) => setText(e.target.value)} 
-                    defaultValue={comment.text}
+                    <input
+                        type="text"
+                        name="text"
+                        onChange={(e) => setText(e.target.value)}
+                        defaultValue={comment.text}
                     />
-                    <br/>
-                    <input type="submit" value="Validate Modification" />
+                    <br />
+                    <div className="btn">
+                        <span
+                            onClick={() => {
+                                if (window.confirm("Would you like to delete this comment?")
+                                ) {
+                                    handleDelete();
+                                }
+                            }}>
+                            <img src="./img/icons/trash.svg" alt="delete" />
+                        </span>
+                        <input type="submit" value="Validate Modification" />
+                    </div>
 
                 </form>
             )}
