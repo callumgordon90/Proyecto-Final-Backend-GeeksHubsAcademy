@@ -1,7 +1,8 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { isEmpty, timestampParser } from '../tools';
 import { NavLink } from 'react-router-dom';
+import { addPost, getPosts } from "../../actions/post.actions";
 
 const NewPostForm = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,9 @@ const NewPostForm = () => {
             if (file) data.append("file", file);
             data.append('video', video);
 
-            
+            await dispatch(addPost(data));
+            dispatch(getPosts());
+            cancelPost();
             
         } else {
             alert("Type a funny message")
