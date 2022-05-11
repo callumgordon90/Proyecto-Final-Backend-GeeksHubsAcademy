@@ -14,6 +14,10 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 
+//trends 
+export const GET_TRENDS = "GET_TRENDS";
+
+
 
 //errors
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
@@ -143,4 +147,11 @@ export const deleteComment = (postId, commentId) => {
             })
             .catch((err) => console.log(err));
     };
-}
+};
+
+
+export const getTrends = (sortedArray) => {
+    return (dispatch) => {
+        dispatch({type: GET_TRENDS, payload: sortedArray})
+    };
+};
