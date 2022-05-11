@@ -17,6 +17,13 @@ const Home = () => {
                 </div>
                 <Thread />
             </div>
+            <div className='right-side'>
+                <div className='right-side-container'>
+                    <div className='wrapper'>
+                        <Trends />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
