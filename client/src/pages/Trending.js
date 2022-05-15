@@ -1,8 +1,9 @@
-import React, { useContext } from 'react-redux';
+import React, { useContext } from 'react';
 import { UidContext } from "../components/AppContext";
 import LeftNav from '../components/LeftNav';
 import { isEmpty } from "../components/tools";
 import Card from "../components/Post/Card";
+import Trends from "../components/Trends";
 
 const Trending = () => {
     const uid = useContext(UidContext);
@@ -15,10 +16,16 @@ const Trending = () => {
             <div className='main'>
                 <ul>
                     {!isEmpty(trendList[0]) && trendingList.map((post) => <Card post={post}
-                    key={post._id} /> )}
+                        key={post._id} />)}
                 </ul>
             </div>
-            
+            <div className="right-side">
+                <div className="right-side-container">
+                    <Trends />
+                    {uid && <FriendsHint />}
+                </div>
+            </div>
+
         </div>
     );
 };
