@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UidContext } from "../AppContext";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';

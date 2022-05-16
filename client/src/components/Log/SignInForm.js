@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const SignInForm = () => {
@@ -44,7 +44,7 @@ const SignInForm = () => {
                 id="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email} />
-            <div classnName="email error"></div>
+            <div className="email error"></div>
             <br />
             <label htmlFor="password">Password</label>
             <br />

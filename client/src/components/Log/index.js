@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 
@@ -7,10 +7,10 @@ const Log = (props ) => {
     const [signInModel, setSignInModel] = useState(props.signin);
 
     const handleModels = (e) => {
-        if (e.target.id == "register") {
+        if (e.target.id === "register") {
             setSignInModel(false);
             setSignUpModel(true);
-        } else if (e.target.id == "login") {
+        } else if (e.target.id === "login") {
             setSignUpModel(false);
             setSignInModel(true);
         }
