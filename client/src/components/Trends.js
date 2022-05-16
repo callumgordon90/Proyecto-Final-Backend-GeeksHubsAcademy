@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrends } from '../actions/post.actions';
 import { isEmpty } from './tools';
-import { Navlink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Trends = () => {
     const posts = useSelector((state) => state.allPostsReducer);
@@ -26,7 +26,7 @@ const Trends = () => {
     return (
         <div className="trending-container">
             <h4>Trending</h4>
-            <Navlink exact to="/trending">
+            <NavLink exact to="/trending">
                 <ul>
                     {trendList.length && 
                         trendList.map((post) => {
@@ -63,7 +63,7 @@ const Trends = () => {
                             );
                         })}
                 </ul>
-            </Navlink>
+            </NavLink>
         </div>
     );
 };
