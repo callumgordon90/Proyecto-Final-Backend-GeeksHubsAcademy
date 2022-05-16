@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import SignInForm from "./SignInForm";
+import SignUpForm from "./SignUpForm";
 
 const Log = (props ) => {
     const [signUpModel, setSignUpModel] = useState(props.signup);

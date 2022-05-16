@@ -1,9 +1,9 @@
-import React, { useContext, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UidContext } from "../AppContext";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useDispatch } from 'react-redux';
-import { likePost } from '../../actions/post.actions';
+import { likePost, unlikePost } from '../../actions/post.actions';
 
 const LikeButton = ({ post }) => {
     const [liked, setLiked] = useEffect(false);

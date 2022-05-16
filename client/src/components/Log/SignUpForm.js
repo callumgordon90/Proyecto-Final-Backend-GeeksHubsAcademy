@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import SignInForm from "./SignInForm";
 
 const SignUpForm = () => {
     const [formSubmit, setFormSubmit] = useState(false);
@@ -88,7 +89,7 @@ const SignUpForm = () => {
                 type="password"
                 name="password"
                 id="password"
-                onChange={(e) => setPassowrd(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
             <div className="password error"></div>

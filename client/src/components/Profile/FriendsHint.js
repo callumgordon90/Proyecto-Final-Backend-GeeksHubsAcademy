@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { isEmpty } from "../tools";
+import FollowHandler from "./FollowHandler";
 
 const FriendsHint = () => {
 

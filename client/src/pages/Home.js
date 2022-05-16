@@ -4,6 +4,7 @@ import LeftNav from '../components/LeftNav';
 import NewPostForm from '../components/Post/NewPostForm';
 import Thread from '../components/Thread';
 import Log from '../components/Log';
+import Trends from "../components/Trends";
 import FriendsHint from '../components/Profile/FriendsHint';
 
 const Home = () => {

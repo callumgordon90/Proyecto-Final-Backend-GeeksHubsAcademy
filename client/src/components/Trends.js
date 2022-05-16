@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 const Trends = () => {
     const posts = useSelector((state) => state.allPostsReducer);
-    const userData = useSelector((state) => state.usersReducer);
+    const usersData = useSelector((state) => state.usersReducer);
     const trendList = useSelector((state) => state.trendingReducer);
     const dispatch = useDispatch();
 

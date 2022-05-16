@@ -73,7 +73,7 @@ const NewPostForm = () => {
             }
         };
         handleVideo();
-    }, [userData, message, video, handleVideo]);
+    }, [userData, message, video]);
 
 
 

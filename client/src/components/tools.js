@@ -27,7 +27,7 @@ export const timestampParser = (num) => {
         day: "numeric",
     };
 
-    let date = newDate(num).toLocalDateString("en-EN", options);
+    let date = new Date(num).toLocalDateString("en-EN", options);
 
     return date.toString();
 }

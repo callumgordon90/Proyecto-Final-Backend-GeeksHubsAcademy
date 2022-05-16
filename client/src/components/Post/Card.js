@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { dateParser, isEmpty } from '../tools';
-import FollowHandler from '../Profile/FollowHandler';
-import LikeButton from './LikeButton';
-import DeleteCard from './Delete.Card';
-import CardComments from './CardComments';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dateParser, isEmpty } from "../tools";
+import FollowHandler from "../Profile/FollowHandler";
+import LikeButton from "./LikeButton";
+import { updatePost } from "../../actions/post.actions";
+import DeleteCard from "./DeleteCard";
+import CardComments from "./CardComments";
 
 
 const Card = ({ post }) => {

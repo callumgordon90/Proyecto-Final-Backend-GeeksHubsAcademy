@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import UploadImg from "./UploadImg";
 import { updateBio } from "../../actions/user.actions";
 import { dateParser } from "../tools";
+import FollowHandler from "./FollowHandler";
+
+
 
 const UpdateProfile = () => {
     const [bio, setBio] = useState ('');
@@ -18,7 +21,7 @@ const UpdateProfile = () => {
     const handleUpdate = ()=> {
         dispatch(updateBio(userData._id, bio));
         setUpdateForm(false);
-    }
+    };
 
 
     return (
@@ -37,9 +40,9 @@ const UpdateProfile = () => {
                 <div className='right-part'>
                     <div className='bio-update'>
                         <h3>Bio</h3>
-                        {updateForm == false && (
+                        {updateForm === false && (
                             <>
-                                <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}<p/>
+                                <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
                                 <button onClick={() => setUpdateForm(!updateForm)}>Modify bio</button>
                             </>
                         )}
@@ -66,7 +69,7 @@ const UpdateProfile = () => {
             {followingPopup && (
                 <div className="popup-profile-container">
                     <div className="model">
-                        <h3>Following></h3>
+                        <h3>Following</h3>
                         <span className="cross" onClick={() => setFollowingPopup(false)}>
                         &#100005;
                         </span>
@@ -97,7 +100,7 @@ const UpdateProfile = () => {
             {followersPopup && (
                 <div className="popup-profile-container">
                     <div className="model">
-                        <h3>Followers></h3>
+                        <h3>Followers</h3>
                         <span className="cross" onClick={() => setFollowersPopup(false)}>
                         &#100005;
                         </span>

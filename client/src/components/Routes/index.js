@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import Home from '../../pages/Home';
 import Profile from '../../pages/Profile';
 import Trending from '../../pages/Trending';
+import Navbar from '../Navbar';
 
 const index = () => {
     return (
