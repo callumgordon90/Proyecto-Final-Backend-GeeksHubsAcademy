@@ -13,8 +13,8 @@ const Card = ({ post }) => {
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
     const [showComments, setShowComments] = useState(false);
-    const usersData = useSelector((state) => state.users.Reducer);
-    const userData = useSelector((state) => state.user.Reducer);
+    const usersData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
 
 

@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import SignInForm from "./SignInForm";
 
 const SignUpForm = () => {
     const [formSubmit, setFormSubmit] = useState(false);
-    const [pseudo, setPseudo] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [controlPassword, setControlPassword] = useState('');
+    const [pseudo, setPseudo] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [controlPassword, setControlPassword] = useState("");
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const terms = document.getElementById('terms');
-        const pseudoError = document.querySelector('.pseudo.error');
-        const emailError = document.querySelector('.email.error');
-        const passwordError = document.querySelector('.password.error');
-        const passwordConfirmError = document.querySelector('.password-confirm.error');
-        const termsError = document.querySelector('.terms.error');
+        const terms = document.getElementById("terms");
+        const pseudoError = document.querySelector(".pseudo.error");
+        const emailError = document.querySelector(".email.error");
+        const passwordError = document.querySelector(".password.error");
+        const passwordConfirmError = document.querySelector(
+            ".password-confirm.error"
+        );
+        const termsError = document.querySelector(".terms.error");
 
         passwordConfirmError.innerHTML = "";
         termsError.innerHTML = "";
 
         if (password !== controlPassword || !terms.checked) {
             if (password !== controlPassword)
-                passwordConfirmError.innerHTML = "The password is incorrect";
+                passwordConfirmError.innerHTML =
+                    "Password does ot correspond";
 
             if (!terms.checked)
                 termsError.innerHTML = "Please accept the terms and conditions";
@@ -31,11 +34,11 @@ const SignUpForm = () => {
             await axios({
                 method: "post",
                 url: `${process.env.REACT_APP_API_URL}api/user/register`,
-                contentType: {
+                data: {
                     pseudo,
                     email,
-                    password
-                }
+                    password,
+                },
             })
                 .then((res) => {
                     console.log(res);
@@ -55,63 +58,69 @@ const SignUpForm = () => {
         <>
             {formSubmit ? (
                 <>
-                <SignInForm />
-                <h4 className="success">Successfully registered , connected</h4>
+                    <SignInForm />
+                    <span></span>
+                    <h4 className="success">
+                        Succesfully registered
+                    </h4>
                 </>
             ) : (
-            
-        <form action="" onSubmit={handleRegister} id="sign-up-form">
-            <label htmlFor="pseudo">Pseudo</label>
-            <br />
-            <input
-                type="text"
-                name="pseudo"
-                id="pseudo"
-                onChange={(e) => setPseudo(e.target.value)}
-                value={pseudo}
-            />
-            <div className="pseudo error"></div>
-            <br />
-            <label htmlFor="email">Email</label>
-            <br />
-            <input
-                type="text"
-                name="email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <div className="email error"></div>
-            <br />
-            <label htmlFor="password">Password</label>
-            <br />
-            <input
-                type="password"
-                name="password"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
-            <div className="password error"></div>
-            <br />
-            <label htmlFor="password-conf">Confirm password</label>
-            <br/>
-            <input
-                type="password"
-                name="password"
-                id="password-conf"
-                onChange={(e) => setControlPassword(e.target.value)}
-                value={controlPassword}
-            />
-            <div className="password-confirm error"></div>
-            <br />
-            <input type="checkbox" id="terms" />
-            <label htmlFor="terms">I accept the <a href="/" target="_blank"
-                rel="noopener noreferrer">general conditions</a></label>
-            <div className="terms error"></div>
-            <br />
-            <input type="submit" value="Validate Registration" />
-        </form>
+                <form action="" onSubmit={handleRegister} id="sign-up-form">
+                    <label htmlFor="pseudo">Pseudo</label>
+                    <br />
+                    <input
+                        type="text"
+                        name="pseudo"
+                        id="pseudo"
+                        onChange={(e) => setPseudo(e.target.value)}
+                        value={pseudo}
+                    />
+                    <div className="pseudo error"></div>
+                    <br />
+                    <label htmlFor="email">Email</label>
+                    <br />
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                    />
+                    <div className="email error"></div>
+                    <br />
+                    <label htmlFor="password">Password</label>
+                    <br />
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
+                    <div className="password error"></div>
+                    <br />
+                    <label htmlFor="password-conf">Confirm password</label>
+                    <br />
+                    <input
+                        type="password"
+                        name="password"
+                        id="password-conf"
+                        onChange={(e) => setControlPassword(e.target.value)}
+                        value={controlPassword}
+                    />
+                    <div className="password-confirm error"></div>
+                    <br />
+                    <input type="checkbox" id="terms" />
+                    <label htmlFor="terms">
+                        I accept the{" "}
+                        <a href="/" target="_blank" rel="noopener noreferrer">
+                            general conditions
+                        </a>
+                    </label>
+                    <div className="terms error"></div>
+                    <br />
+                    <input type="submit" value="Validate inscription" />
+                </form>
             )}
         </>
     );
