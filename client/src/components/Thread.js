@@ -13,8 +13,7 @@ const Thread = () => {
 
 
     const loadMore = () => {
-        if (window.innerHeight + document.documentElement.scrolTop + 1 > document.
-        scrollingElement.scrollHeight) {
+        if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
             setLoadPost(true);
         }
     }
