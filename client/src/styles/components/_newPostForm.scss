@@ -1,5 +1,6 @@
 .post-container {
   margin: 0 auto 0;
+  min-height: 438px;
   padding: 16px 40px;
   border-radius: 20px;
   position: relative;
@@ -43,7 +44,8 @@
   }
   .post-form {
     position: relative;
-    margin: 0 auto 0;
+    margin-top: 55px;
+    
 
     textarea {
       height: 62px;
