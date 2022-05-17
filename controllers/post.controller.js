@@ -86,14 +86,12 @@ module.exports.updatePost = (req, res) => {
 module.exports.deletePost = (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID not recognised : " + req.params.id);
-    PostModel.find.findByIdAndRemove(
-        req.params.id,
-        (err, docs) => {
-            if (!err) res.send(docs);
-            else console.log("Delete error: " + err);
-        }
-    );
-}
+
+    PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
+        if (!err) res.send(docs);
+        else console.log("Delete error : " + err);
+    });
+};
 
 //CRUD function to like a post:
 module.exports.likePost = async (req, res) => {
