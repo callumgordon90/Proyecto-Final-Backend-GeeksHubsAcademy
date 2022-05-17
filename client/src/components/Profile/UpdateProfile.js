@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import LeftNav from '../LeftNav';
+import React, { useState } from "react";
+import LeftNav from "../LeftNav";
 import { useDispatch, useSelector } from "react-redux";
 import UploadImg from "./UploadImg";
 import { updateBio } from "../../actions/user.actions";
 import { dateParser } from "../tools";
 import FollowHandler from "./FollowHandler";
 
-
-
 const UpdateProfile = () => {
-    const [bio, setBio] = useState('');
+    const [bio, setBio] = useState("");
     const [updateForm, setUpdateForm] = useState(false);
     const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer);
@@ -23,27 +21,27 @@ const UpdateProfile = () => {
         setUpdateForm(false);
     };
 
-
     return (
-        <div className='profile-container'>
+        <div className="profile-container">
             <LeftNav />
-            <h1> Profile page of {userData.pseudo}</h1>
-            <div className='update-container'>
-                <div className='left-part'>
+            <h1> Profile of {userData.pseudo}</h1>
+            <div className="update-container">
+                <div className="left-part">
                     <h3>Profile photo</h3>
                     <img src={userData.picture} alt="user-pic" />
                     <UploadImg />
                     <p>{error.maxSize}</p>
                     <p>{error.format}</p>
-
                 </div>
-                <div className='right-part'>
-                    <div className='bio-update'>
+                <div className="right-part">
+                    <div className="bio-update">
                         <h3>Bio</h3>
                         {updateForm === false && (
                             <>
                                 <p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
-                                <button onClick={() => setUpdateForm(!updateForm)}>Modify bio</button>
+                                <button onClick={() => setUpdateForm(!updateForm)}>
+                                    Modify bio
+                                </button>
                             </>
                         )}
                         {updateForm && (
@@ -58,20 +56,20 @@ const UpdateProfile = () => {
                         )}
                     </div>
                     <h4>Member since : {dateParser(userData.createdAt)}</h4>
-                    <h5 onClick={() => setFollowingPopup(true)}>Following : {userData.following ? userData.following.length : ""}</h5>
-                    <h5 onClick={() => setFollowersPopup(true)}>Followers : {userData.followers ? userData.followers.length : ""}</h5>
+                    <h5 onClick={() => setFollowingPopup(true)}>
+                        Following : {userData.following ? userData.following.length : ""}
+                    </h5>
+                    <h5 onClick={() => setFollowersPopup(true)}>
+                        Followers : {userData.followers ? userData.followers.length : ""}
+                    </h5>
                 </div>
             </div>
-
-
-
-
             {followingPopup && (
                 <div className="popup-profile-container">
-                    <div className="model">
-                        <h3>Following</h3>
+                    <div className="modal">
+                        <h3>Abonnements</h3>
                         <span className="cross" onClick={() => setFollowingPopup(false)}>
-                            &#100005;
+                            &#10005;
                         </span>
                         <ul>
                             {usersData.map((user) => {
@@ -82,13 +80,11 @@ const UpdateProfile = () => {
                                                 <img src={user.picture} alt="user-pic" />
                                                 <h4>{user.pseudo}</h4>
                                                 <div className="follow-handler">
-                                                    <FollowHandler idToFollow={user._id} type=
-                                                        {'suggestion'} />
+                                                    <FollowHandler idToFollow={user._id} type={'suggestion'} />
                                                 </div>
                                             </li>
                                         );
                                     }
-
                                 }
                                 return null;
                             })}
@@ -96,14 +92,12 @@ const UpdateProfile = () => {
                     </div>
                 </div>
             )}
-
-
             {followersPopup && (
                 <div className="popup-profile-container">
-                    <div className="model">
-                        <h3>Followers</h3>
+                    <div className="modal">
+                        <h3>Abonnés</h3>
                         <span className="cross" onClick={() => setFollowersPopup(false)}>
-                            &#100005;
+                            &#10005;
                         </span>
                         <ul>
                             {usersData.map((user) => {
@@ -114,8 +108,7 @@ const UpdateProfile = () => {
                                                 <img src={user.picture} alt="user-pic" />
                                                 <h4>{user.pseudo}</h4>
                                                 <div className="follow-handler">
-                                                    <FollowHandler idToFollow={user._id} type=
-                                                        {'suggestion'} />
+                                                    <FollowHandler idToFollow={user._id} type={'suggestion'} />
                                                 </div>
                                             </li>
                                         );
@@ -127,8 +120,6 @@ const UpdateProfile = () => {
                     </div>
                 </div>
             )}
-
-
         </div>
     );
 };
