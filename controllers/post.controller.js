@@ -159,7 +159,8 @@ module.exports.unlikePost = async (req, res) => {
 //CRUD function to comment on the post of another user:
 module.exports.commentPost = (req, res) => {
     if (!ObjectID.isValid(req.params.id))
-        return res.status(400).send("ID not recognised : " + req.params.id);
+        return res.status(400).send("ID unknown : " + req.params.id);
+
     try {
         return PostModel.findByIdAndUpdate(
             req.params.id,
@@ -173,12 +174,9 @@ module.exports.commentPost = (req, res) => {
                     },
                 },
             },
-            { new: true },
-            (err, docs) => {
-                if (!err) return res.send(docs);
-                else return res.status(400).send(err);
-            }
-        );
+            { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
     } catch (err) {
         return res.status(400).send(err);
     }

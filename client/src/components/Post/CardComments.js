@@ -7,8 +7,8 @@ import EditDeleteComment from "./EditDeleteComment";
 
 const CardComments = ({ post }) => {
     const [text, setText] = useState("");
-    const usersData = useSelector((state) => state.users.Reducer);
-    const userData = useSelector((state) => state.user.Reducer);
+    const usersData = useSelector((state) => state.usersReducer);
+    const userData = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
 
     const handleComment = (e) => {
