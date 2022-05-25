@@ -10,7 +10,7 @@ const pipeline = promisify(require("stream").pipeline);
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
-    else console.log("Error getting data : " + err);
+    else console.log("Error in getting data : " + err);
   }).sort({ createdAt: -1 });
 };
 

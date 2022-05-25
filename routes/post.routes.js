@@ -1,7 +1,6 @@
-const router = require ('express').Router();
-const postController = require ('../controllers/post.controller');
-
-const multer = require('multer');
+const router = require('express').Router();
+const postController = require('../controllers/post.controller');
+const multer = require("multer");
 const upload = multer();
 
 
@@ -14,7 +13,7 @@ router.get('/', postController.readPost);
 router.post('/', upload.single("file"), postController.createPost);
 
 //Update a post:
-router.post('/', postController.updatePost);
+router.put('/:id', postController.updatePost);
 
 //Delete a post:
 router.delete('/:id', postController.deletePost);
