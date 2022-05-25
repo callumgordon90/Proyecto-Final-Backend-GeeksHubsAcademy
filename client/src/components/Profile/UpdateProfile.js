@@ -24,10 +24,10 @@ const UpdateProfile = () => {
   return (
     <div className="profile-container">
       <LeftNav />
-      <h1>{userData.pseudo}'s Profile</h1>
+      <h1>{userData.pseudo}'s profile</h1>
       <div className="update-container">
         <div className="left-part">
-          <h3>Profile picture</h3>
+          <h3>Photo de profil</h3>
           <img src={userData.picture} alt="user-pic" />
           <UploadImg />
           <p>{error.maxSize}</p>
@@ -51,7 +51,7 @@ const UpdateProfile = () => {
                   defaultValue={userData.bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
-                <button onClick={handleUpdate}>Save changes to bio</button>
+                <button onClick={handleUpdate}>Valider modifications</button>
               </>
             )}
           </div>
@@ -67,7 +67,7 @@ const UpdateProfile = () => {
       {followingPopup && (
         <div className="popup-profile-container">
           <div className="modal">
-            <h3>Subscriptions</h3>
+            <h3>Following</h3>
             <span className="cross" onClick={() => setFollowingPopup(false)}>
               &#10005;
             </span>

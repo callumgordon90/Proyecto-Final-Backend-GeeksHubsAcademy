@@ -26,7 +26,7 @@ const NewPostForm = () => {
       dispatch(getPosts());
       cancelPost();
     } else {
-      alert("Send Message")
+      alert("Please write a message")
     }
   };
  
@@ -75,11 +75,11 @@ const NewPostForm = () => {
             <p>
               <span>{userData.following ? userData.following.length : 0}</span>{" "}
               Following
-              {userData.following && userData.following.length > 1 ? "s" : null}
+              {userData.following && userData.following.length > 1 ? " " : null}
             </p>
             <p>
               <span>{userData.followers ? userData.followers.length : 0}</span>{" "}
-              Followers
+              Follower
               {userData.followers && userData.followers.length > 1 ? "s" : null}
             </p>
           </div>
@@ -92,7 +92,7 @@ const NewPostForm = () => {
             <textarea
               name="message"
               id="message"
-              placeholder="Write something funny"
+              placeholder="Write something funny here"
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
@@ -147,7 +147,7 @@ const NewPostForm = () => {
               <div className="btn-send">
                 {message || postPicture || video.length > 20 ? (
                   <button className="cancel" onClick={cancelPost}>
-                    Cancel message
+                    Cancel Message
                   </button>
                 ) : null}
                 <button className="send" onClick={handlePost}>
