@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-
 import Home from '../../pages/Home';
 import Profile from '../../pages/Profile';
 import Trending from '../../pages/Trending';
