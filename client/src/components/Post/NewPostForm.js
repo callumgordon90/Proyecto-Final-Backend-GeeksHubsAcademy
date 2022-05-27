@@ -26,7 +26,7 @@ const NewPostForm = () => {
       dispatch(getPosts());
       cancelPost();
     } else {
-      alert("Please write a message")
+      alert("What are you waiting for? Write something!")
     }
   };
  
@@ -147,7 +147,7 @@ const NewPostForm = () => {
               <div className="btn-send">
                 {message || postPicture || video.length > 20 ? (
                   <button className="cancel" onClick={cancelPost}>
-                    Cancel Message
+                    Cancel message
                   </button>
                 ) : null}
                 <button className="send" onClick={handlePost}>
