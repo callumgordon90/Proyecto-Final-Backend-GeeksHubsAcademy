@@ -26,7 +26,7 @@ const SignUpForm = () => {
         if (password !== controlPassword || !terms.checked) {
             if (password !== controlPassword)
                 passwordConfirmError.innerHTML =
-                    "Password does ot correspond";
+                    "The password is not valid";
 
             if (!terms.checked)
                 termsError.innerHTML = "Please accept the terms and conditions";
@@ -66,7 +66,7 @@ const SignUpForm = () => {
                 </>
             ) : (
                 <form action="" onSubmit={handleRegister} id="sign-up-form">
-                    <label htmlFor="pseudo">Pseudo</label>
+                    <label htmlFor="pseudo">Username</label>
                     <br />
                     <input
                         type="text"
@@ -99,7 +99,7 @@ const SignUpForm = () => {
                     />
                     <div className="password error"></div>
                     <br />
-                    <label htmlFor="password-conf">Confirm password</label>
+                    <label htmlFor="password-conf">Confirm Password</label>
                     <br />
                     <input
                         type="password"
@@ -114,12 +114,12 @@ const SignUpForm = () => {
                     <label htmlFor="terms">
                         I accept the{" "}
                         <a href="/" target="_blank" rel="noopener noreferrer">
-                            general conditions
+                            terms and conditions
                         </a>
                     </label>
                     <div className="terms error"></div>
                     <br />
-                    <input type="submit" value="Validate inscription" />
+                    <input type="submit" value="Confirm Registration" />
                 </form>
             )}
         </>
