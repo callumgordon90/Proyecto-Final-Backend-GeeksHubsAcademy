@@ -14,7 +14,8 @@ const Profile = () => {
         <div className="log-container">
           <Log signin={false} signup={true} />
           <div className="img-container">
-            <img src="./img/log.svg" alt="img-log" />
+            <img src="./img/icon.png.png" alt="img-log" />
+            <h3 >Welcome to the Joke Vault. The only social network dedicated solely to sharing silly jokes and videos.</h3>
           </div>
         </div>
       )}

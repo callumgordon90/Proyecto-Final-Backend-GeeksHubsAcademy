@@ -22,9 +22,9 @@ const Navbar = () => {
         {uid ? (
           <ul>
             <li></li>
-            <li className="Welcome">
+            <li className="welcome">
               <NavLink exact to="/profile">
-                <h5>Welcome {userData.pseudo}</h5>
+                <h5>Bienvenue {userData.pseudo}</h5>
               </NavLink>
             </li>
             <Logout />
