@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="logo">
           <NavLink exact to="/">
             <div className="logo">
-              <img src="./img/icon.png.png" alt="icon" />
+              <img src="./img/icon.png" alt="icon" />
               <h3>The Joke Vault</h3>
             </div>
           </NavLink>
@@ -24,7 +24,7 @@ const Navbar = () => {
             <li></li>
             <li className="welcome">
               <NavLink exact to="/profile">
-                <h5>Bienvenue {userData.pseudo}</h5>
+                <h5>Welcome {userData.pseudo}</h5>
               </NavLink>
             </li>
             <Logout />
