@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteComment, editComment } from "../../actions/post.actions";
 import { UidContext } from "../AppContext";
 
-const EditDeleteComment = ({ comment, postId, }) => {
+const EditDeleteComment = ({ comment, postId }) => {
   const [isAuthor, setIsAuthor] = useState(false);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState("");
@@ -14,7 +14,7 @@ const EditDeleteComment = ({ comment, postId, }) => {
     e.preventDefault();
 
     if (text) {
-      dispatch(editComment(postId, comment, text));
+      dispatch(editComment(postId, comment._id, text));
       setText("");
       setEdit(false);
     }
@@ -24,12 +24,12 @@ const EditDeleteComment = ({ comment, postId, }) => {
 
   useEffect(() => {
     const checkAuthor = () => {
-      if (uid || comment.commenterId) {
+      if (uid === comment.commenterId) {
         setIsAuthor(true);
       }
     };
     checkAuthor();
-  }, [uid || comment.commenterId]);
+  }, [uid, comment.commenterId]);
 
   return (
     <div className="edit-comment">
@@ -48,7 +48,7 @@ const EditDeleteComment = ({ comment, postId, }) => {
             type="text"
             name="text"
             onChange={(e) => setText(e.target.value)}
-            defaultValue={comment}
+            defaultValue={comment.text}
           />
           <br />
           <div className="btn">

@@ -35,7 +35,7 @@ router.patch("/unfollow/:id", userController.unfollow);
 
 
 
-//Upoload a profile picture on an account:
+//Upload a profile picture on an account:
 router.post("/upload", upload.single("file"), uploadController.uploadProfile);
 
 
