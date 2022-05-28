@@ -7,6 +7,8 @@ const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 
+
+//CRUD function to read(get) a post:
 module.exports.readPost = (req, res) => {
   PostModel.find((err, docs) => {
     if (!err) res.send(docs);
@@ -14,6 +16,9 @@ module.exports.readPost = (req, res) => {
   }).sort({ createdAt: -1 });
 };
 
+
+
+//CRUD function to create a post:
 module.exports.createPost = async (req, res) => {
   let fileName;
 
@@ -58,6 +63,8 @@ module.exports.createPost = async (req, res) => {
   }
 };
 
+
+//CRUD function to update a post:
 module.exports.updatePost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -77,6 +84,9 @@ module.exports.updatePost = (req, res) => {
   );
 };
 
+
+
+//CRUD function to delete a post:
 module.exports.deletePost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -87,60 +97,71 @@ module.exports.deletePost = (req, res) => {
   });
 };
 
+
+//CRUD function to like a post:
 module.exports.likePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
-    return res.status(400).send("ID unknown : " + req.params.id);
-
+      return res.status(400).send("ID not recognised : " + req.params.id);
   try {
-    await PostModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $addToSet: { likers: req.body.id },
-      },
-      { new: true })
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-
-    await UserModel.findByIdAndUpdate(
-      req.body.id,
-      {
-        $addToSet: { likes: req.params.id },
-      },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+      await PostModel.findByIdAndUpdate(
+          req.params.id,
+          {
+              $addToSet: { likers: req.body.id }
+          },
+          { new: true },
+          (err, docs) => {
+              if (err) return res.status(400).send(err);
+          }
+      );
+      await UserModel.findByIdAndUpdate(
+          req.body.id,
+          {
+              $addToSet: { likes: req.params.id }
+          },
+          { new: true },
+          (err, docs) => {
+              if (!err) res.send(docs);
+              else return res.status(400).send
+          }
+      )
+  } catch (err) {
+      return res.status(400).send(err);
+  }
 };
 
+//CRUD function to unlike a post:
 module.exports.unlikePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
-    return res.status(400).send("ID unknown : " + req.params.id);
-
+      return res.status(400).send("ID not recognised : " + req.params.id);
   try {
-    await PostModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $pull: { likers: req.body.id },
-      },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
+      await PostModel.findByIdAndUpdate(
+          req.params.id,
+          {
+              $pull: { likers: req.body.id }
+          },
+          { new: true },
+          (err, docs) => {
+              if (err) return res.status(400).send(err);
+          }
+      );
+      await UserModel.findByIdAndUpdate(
+          req.body.id,
+          {
+              $pull: { likes: req.params.id }
+          },
+          { new: true },
+          (err, docs) => {
+              if (!err) res.send(docs);
+              else return res.status(400).send
+          }
+      )
+  } catch (err) {
+      return res.status(400).send(err);
+  }
+}
 
-    await UserModel.findByIdAndUpdate(
-      req.body.id,
-      {
-        $pull: { likes: req.params.id },
-      },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
-};
 
+//CRUD function to comment on the post of another user:
 module.exports.commentPost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -166,6 +187,9 @@ module.exports.commentPost = (req, res) => {
     }
 };
 
+
+
+//CRUD function to edit the comment on a post:
 module.exports.editCommentPost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -189,6 +213,8 @@ module.exports.editCommentPost = (req, res) => {
   }
 };
 
+
+//CRUD function to delete the comment on a post:
 module.exports.deleteCommentPost = (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
