@@ -6,6 +6,7 @@ import { updateBio } from "../../actions/user.actions";
 import { dateParser } from "../tools";
 import FollowHandler from "./FollowHandler";
 
+
 const UpdateProfile = () => {
   const [bio, setBio] = useState("");
   const [updateForm, setUpdateForm] = useState(false);

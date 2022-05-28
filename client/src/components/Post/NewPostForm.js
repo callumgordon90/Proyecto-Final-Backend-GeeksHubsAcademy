@@ -9,7 +9,7 @@ const NewPostForm = () => {
   const [message, setMessage] = useState("");
   const [postPicture, setPostPicture] = useState(null);
   const [video, setVideo] = useState("");
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("");
   const userData = useSelector((state) => state.userReducer);
   const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
