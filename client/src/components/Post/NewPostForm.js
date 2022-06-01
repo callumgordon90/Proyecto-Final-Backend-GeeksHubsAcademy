@@ -7,7 +7,7 @@ import { addPost, getPosts } from "../../actions/post.actions";
 const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const [postPicture, setPostPicture] = useState(null);
+  const [postPicture, setPostPicture] = useState("");
   const [video, setVideo] = useState("");
   const [file, setFile] = useState("");
   const userData = useSelector((state) => state.userReducer);
