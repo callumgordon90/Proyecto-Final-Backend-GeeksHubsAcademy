@@ -12,7 +12,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-    origin: "*",
+    origin: 'http://localhost:3000/',
 
     'allowedHeaders': ['sessionId', 'Content-Type', 'Access-Control-Allow-Origin'],
     'exposedHeaders': ['sessionId', 'Access-Control-Allow-Origin'],
