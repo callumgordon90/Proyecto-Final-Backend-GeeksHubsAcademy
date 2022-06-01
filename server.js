@@ -13,10 +13,9 @@ const app = express();
 
 const corsOptions = {
      origin: '*',
-    'allowedHeaders': ['sessionId', 'Content-Type', 'Access-Control-Allow-Origin'],
-    'exposedHeaders': ['sessionId', 'Access-Control-Allow-Origin'],
-    'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
-    'preflightContinue': false
+
+    'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE'
+    
 }
 app.use(cors(corsOptions));
 
