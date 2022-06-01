@@ -12,12 +12,11 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-    // origin: 'http://localhost:3000/',
-
+     origin: '*',
     'allowedHeaders': ['sessionId', 'Content-Type', 'Access-Control-Allow-Origin'],
     'exposedHeaders': ['sessionId', 'Access-Control-Allow-Origin'],
     'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
-    'preflightContinue': true
+    'preflightContinue': false
 }
 app.use(cors(corsOptions));
 
