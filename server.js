@@ -36,8 +36,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 
-//function to connect to database:
-dbconnect();
+
 
 // server
 app.listen(process.env.PORT, () => {
