@@ -12,7 +12,15 @@ const cors = require('cors');
 const app = express();
 
 //CHANGED CORS SECURITY
-app.use(cors({origin: '*', credentials: true}));
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    'preflightContinue': false
+}
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
