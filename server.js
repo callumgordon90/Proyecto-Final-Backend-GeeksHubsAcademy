@@ -14,7 +14,7 @@ const app = express();
 //CHANGED CORS SECURITY
 const corsOptions = {
     origin: '*',
-    credentials: true,
+    credentials: false,
     'allowedHeaders': ['sessionId', 'Content-Type'],
     'exposedHeaders': ['sessionId'],
     'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
