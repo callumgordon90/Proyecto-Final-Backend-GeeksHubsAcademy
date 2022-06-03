@@ -13,7 +13,7 @@ const app = express();
 
 //CHANGED CORS SECURITY
 const corsOptions = {
-    origin: 'process.env.CLIENT_URL',
+    origin: 'CLIENT_URL',
     credentials: true,
     'allowedHeaders': ['sessionId', 'Content-Type'],
     'exposedHeaders': ['sessionId'],
